@@ -1,6 +1,7 @@
 package com.revature.q2;
 
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -17,13 +18,13 @@ public class Q2Driver {
 	      }
 	    Job job = new Job();
 	    job.setJarByClass(Q2Driver.class);
-	    job.setJobName("Question 1");
+	    job.setJobName("Question 2");
 	    FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		job.setMapperClass(Q2Mapper.class);
 		job.setReducerClass(Q2Reducer.class);
 	    job.setOutputKeyClass(Text.class);
-	    job.setOutputValueClass(Text.class);
+	    job.setOutputValueClass(DoubleWritable.class);
 	    //System exit as 0 if the job completes successfully, otherwise exit as 1
 	    boolean success = job.waitForCompletion(true);
 	    System.exit(success ? 0 : 1);
