@@ -20,9 +20,7 @@ public class Q1Driver {
 	    job.setJobName("Question 1");
 	    FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
-		job.setMapperClass(Q1Mapper.class);
-		//Set number of reducers to 0 because just does not use reducers
-		job.setNumReduceTasks(0);
+		job.setMapperClass(Q1Mapper.class);						//Note, did not use reducer for question 1
 	    job.setOutputKeyClass(Text.class);
 	    job.setOutputValueClass(Text.class);
 	    //System exit as 0 if the job completes successfully, otherwise exit as 1

@@ -17,7 +17,7 @@ public class Q3Driver {
 	      }
 	    Job job = new Job();
 	    job.setJarByClass(Q3Driver.class);
-	    job.setJobName("Question 2");
+	    job.setJobName("Question 3");
 	    FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		job.setMapperClass(Q3Mapper.class);
