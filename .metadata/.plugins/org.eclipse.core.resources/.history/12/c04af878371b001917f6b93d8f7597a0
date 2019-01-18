@@ -1,0 +1,40 @@
+package com.revature.q1;
+
+import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Job;
+import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
+import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
+
+public class Driver {
+
+	
+	public static void main(String[] args) throws Exception{
+	    if (args.length != 2) {												//Check if two arguments were passed from command line
+	        System.out.printf("Usage: driver <input dir> <output dir>\n");
+	        System.exit(-1);
+	      }
+	    
+	    Job job = new Job();												//Instantiate a job object for configuration
+	    
+	    job.setJarByClass(Driver.class);									//Specify the driver class that the jar will look for
+	    
+	    job.setJobName("Question 1");										//Specify a name for the job
+	    
+	    FileInputFormat.setInputPaths(job, new Path(args[0]));				//Assign first passed argument as the input path
+	    
+		FileOutputFormat.setOutputPath(job, new Path(args[1]));				//Assign second passed argument as the output path
+		
+		job.setMapperClass(Q1Mapper.class);									//Set mapper class
+	    
+	    //job.setReducerClass(Q1Reducer.class);								//Set reducer class
+	    
+	    job.setOutputKeyClass(Text.class);									//Set output key
+	    
+	    job.setOutputValueClass(Text.class);								//Set output value
+	    
+	    boolean success = job.waitForCompletion(true);						//Wait for job to finish
+	    System.exit(success ? 0 : 1);										//Return 0 if job finishes successfully
+	}
+	
+}

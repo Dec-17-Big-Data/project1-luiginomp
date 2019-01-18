@@ -1,0 +1,39 @@
+package com.revature.q1;
+
+import java.io.IOException;
+import java.util.regex.Pattern;
+
+import org.apache.hadoop.io.*;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class Q1Mapper extends Mapper <LongWritable, Text, Text, Text> {
+	
+	//Identify the countries where % of female graduates is less than 30%.
+	@Override
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
+		//Create a pattern to mach breaks
+		Pattern pattern = Pattern.compile(",(?=([^\"]*\"[^\"]*\")*(?![^\"]*\"))");
+		//Use pattern to split the input into fields
+		String[] fields = pattern.split(value.toString());
+		//Get rid of remaining double quotes
+		for(int i = 9; i < fields.length; i++){
+			fields[i] = fields[i].replace("\"", "");
+		}
+		//Check if the field containing indicator code matches the indicator code for female graduates
+		if(fields[3].equals("SE.TER.CMPL.FE.ZS")){
+			//Start from the most recent year field and work your way back
+			for(int i = fields.length -1; i > 0; i--){
+				try{
+					Double percentage = Double.parseDouble(fields[i]);
+					if(percentage < 30){
+						String country = fields[0].substring(1);
+						context.write(new Text(country), new Text(fields[i]));
+						i = 0;
+					}
+				}catch (Exception e){
+				}
+			}
+			
+		}
+	}
+}
