@@ -5513,3 +5513,7 @@ java.io.InvalidClassException: org.eclipse.m2e.core.internal.project.registry.Ba
 2019-01-21 13:16:27,868 [main] INFO  o.e.m2e.actions.ExecutePomAction - Creating new launch configuration
 2019-01-21 13:16:42,987 [Worker-84] INFO  o.e.m.i.launch.MavenLaunchDelegate - /media/sf_Shared/Revature/project-workspaces/project1/Question2
 2019-01-21 13:16:42,990 [Worker-84] INFO  o.e.m.i.launch.MavenLaunchDelegate -  mvn  -B package
+2019-01-21 13:17:34,721 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-01-21 13:17:34,729 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
+2019-01-21 13:17:34,733 [Worker-84] WARN  o.e.m.c.i.embedder.EclipseLogger - Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
+2019-01-21 13:17:34,741 [Worker-84] INFO  o.e.m.c.i.embedder.EclipseLogger - Copying 0 resource
