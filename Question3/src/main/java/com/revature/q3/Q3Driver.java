@@ -1,6 +1,7 @@
 package com.revature.q3;
 
 import org.apache.hadoop.fs.Path;
+import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
@@ -22,8 +23,10 @@ public class Q3Driver {
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		job.setMapperClass(Q3Mapper.class);
 		job.setReducerClass(Q3Reducer.class);
-//	    job.setOutputKeyClass(Text.class);
-//	    job.setOutputValueClass(Text.class);
+		job.setMapOutputKeyClass(Text.class);
+		job.setMapOutputValueClass(Text.class);
+	    job.setOutputKeyClass(Text.class);
+	    job.setOutputValueClass(DoubleWritable.class);
 	    //System exit as 0 if the job completes successfully, otherwise exit as 1
 	    boolean success = job.waitForCompletion(true);
 	    System.exit(success ? 0 : 1);

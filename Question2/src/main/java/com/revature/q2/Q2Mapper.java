@@ -10,6 +10,7 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 	//List the average increase in female education in the U.S. from the year 2000.
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
+		//Cleanse data
 		String[] fields = value.toString().split("\",\"?");
 		//Check if country code field contains "USA"
 		if(fields[1].equals("USA")){
