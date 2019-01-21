@@ -11,7 +11,7 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
 		//Cleanse data
-		String[] fields = value.toString().split("\",\"?");
+		String[] fields = value.toString().split("\",\"");
 		//Check if country code field contains "USA"
 		if(fields[1].equals("USA")){
 			//Check if indicator code field meets the criteria for primary, secondary, or post-secondary education
@@ -25,12 +25,16 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 					Double entry = null;
 					try{
 						entry = Double.parseDouble(fields[i]);
+						System.out.println("Found new entry: " + entry);
 					}catch(NumberFormatException e){
+						System.out.println("Skipped unparsable field: index " + i + ", " + fields[i]);
 						continue;
 					}catch(NullPointerException e){
+						System.out.println("Skipped empty field: index " + i + ", " + fields[i]);
 						continue;
 					}
 					if(lastPercentage == null){
+						System.out.println("Need another entry to calculate");
 						lastPercentage = entry;
 						currentPercentage = entry;
 						continue;
@@ -49,7 +53,6 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 						category = "Post-Secondary";
 					}
 					context.write(new Text(category), new DoubleWritable(increase));
-					System.out.println(category + ", " + increase);
 				}
 			}
 		}

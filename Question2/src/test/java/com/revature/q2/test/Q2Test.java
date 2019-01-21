@@ -1,5 +1,8 @@
 package com.revature.q2.test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
@@ -28,18 +31,25 @@ public class Q2Test {
 	 
 	  @Test
 	  public void testMapper() {
-		  mapDriver.withInput(new LongWritable(), new Text("\"United States\",\"USA\",\"Educational attainment, at least completed primary, population 25+ years, female (%) (cumulative)\",\"SE.PRM.CUAT.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"95\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"96.64463\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"50\",\"100\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"98.76783\",\"\","));
-		  mapDriver.withOutput(new Text("Primary"), new DoubleWritable(1.0));
+		  mapDriver.withInput(new LongWritable(), new Text("\"United States\",\"USA\",\"Educational attainment, at least completed primary, population 25+ years, female (%) (cumulative)\",\"SE.PRM.CUAT.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"20.00\",\"75.00\",\"\",\"\",\"\","));
+		  mapDriver.withOutput(new Text("Primary"), new DoubleWritable(2.75));
 		  mapDriver.runTest();
 	  }
 	  
 	  @Test
 	  public void testReducer() {
-		  //TODO Implement
+		    List<DoubleWritable> values = new ArrayList<DoubleWritable>();
+		    values.add(new DoubleWritable(23.64));
+		    values.add(new DoubleWritable(19.52));
+		    reduceDriver.withInput(new Text("Primary"), values);
+		    reduceDriver.withOutput(new Text("Primary"), new DoubleWritable(21.58));
+		    reduceDriver.runTest();
 	  }
 	  
 	  @Test
 	  public void testMapReduce() {
-		  //TODO Implement
+		    mapReduceDriver.withInput(new LongWritable(), new Text("\"United States\",\"USA\",\"Educational attainment, at least completed primary, population 25+ years, female (%) (cumulative)\",\"SE.PRM.CUAT.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"10.00\",\"40.00\",\"\",\"\",\"20.00\",\"75.00\",\"\",\"\",\"\","));
+		    mapReduceDriver.withOutput(new Text("Primary"), new DoubleWritable(1.75));
+		    mapReduceDriver.runTest();
 	  }
 }

@@ -18,7 +18,6 @@ public class Q2Reducer extends Reducer <Text, DoubleWritable, Text, DoubleWritab
 			  counter += 1;
 		  }
 		  Double average = sum / counter;
-		  System.out.println("Q2Reducer writing key " + key + " and value " + average);
 		  context.write(new Text(key), new DoubleWritable(average));
 	  }
 }
