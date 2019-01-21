@@ -1,0 +1,18 @@
+package com.revature.q4;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+
+public class Q4Mapper extends Mapper <LongWritable, Text, Text, Text>{
+	//List the % of change in female employment from the year 2000.
+	/*
+	 * ASSUMPTIONS
+	 * Need results from every country with available data
+	 * Don't include any countries that don't have any available data
+	 * 
+	 * APPROACH
+	 * Use data from "Employment to population ratio, 15+, male (%) (modeled ILO estimate)"	SL.EMP.TOTL.SP.MA.ZS
+	 * Present results by country and its percentage
+	 */
+}

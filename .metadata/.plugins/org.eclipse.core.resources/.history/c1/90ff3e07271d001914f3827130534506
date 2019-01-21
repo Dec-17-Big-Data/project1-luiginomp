@@ -1,0 +1,9 @@
+package com.revature.q4;
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class Q4Reducer extends Reducer <Text, Text, Text, DoubleWritable>{
+	//List the % of change in female employment from the year 2000.
+}
