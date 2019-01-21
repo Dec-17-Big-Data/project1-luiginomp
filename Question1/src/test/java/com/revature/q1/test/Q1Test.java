@@ -19,6 +19,8 @@ public class Q1Test {
 	 
 	  @Test
 	  public void testMapper() {
-		  //TODO Implement
+		  mapDriver.withInput(new LongWritable(), new Text("\"Albania\",\"ALB\",\"Gross graduation ratio, tertiary, female (%)\",\"SE.TER.CMPL.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"12.39418\",\"\",\"\",\"15.0017\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"39.70473\",\"48.23856\",\"51.73209\",\"43.19789\",\"47.20538\",\"\","));
+		  mapDriver.withOutput(new Text("Albania"), new Text("15.0017"));
+		  mapDriver.runTest();
 	  }
 }

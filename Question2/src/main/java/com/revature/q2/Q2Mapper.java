@@ -38,6 +38,7 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 					lastPercentage = currentPercentage;
 					currentPercentage = entry;
 					Double increase = (currentPercentage - lastPercentage) / lastPercentage;
+					System.out.println("(" + currentPercentage + " - " + lastPercentage + ") / " + lastPercentage + " = " + increase);
 					String category = null;
 					//Change which key is written dependent on the indicator code field
 					if(fields[3].equals("SE.PRM.CUAT.FE.ZS")){
@@ -48,6 +49,7 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 						category = "Post-Secondary";
 					}
 					context.write(new Text(category), new DoubleWritable(increase));
+					System.out.println(category + ", " + increase);
 				}
 			}
 		}
