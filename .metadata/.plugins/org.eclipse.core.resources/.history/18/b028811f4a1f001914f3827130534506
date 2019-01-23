@@ -1,0 +1,16 @@
+package com.revature.q5;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+/**
+ * Mapper for MapReduce solution to Question 5.
+ * Extends Mapper class from org.apache.hadoop.mapreduce.Mapper.
+ * @author Luigino Perez
+ *
+ */
+public class Q5Mapper extends Mapper <LongWritable, Text, Text, Text>{
+	}
+}

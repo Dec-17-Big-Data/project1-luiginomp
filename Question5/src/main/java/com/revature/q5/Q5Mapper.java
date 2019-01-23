@@ -1,0 +1,27 @@
+package com.revature.q5;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+/**
+ * Mapper for MapReduce solution to Question 5.
+ * Extends Mapper class from org.apache.hadoop.mapreduce.Mapper.
+ * @author Luigino Perez
+ *
+ */
+public class Q5Mapper extends Mapper <LongWritable, Text, Text, Text>{
+	/**
+
+	 * Assumes input file given  to job is Gender_StatsData.csv from Revature project 1 requirements.
+	 * Breaks value into String Array based on csv separators.
+	 * @param key - LongWritable passed in during file input split
+	 * @param value - Text represented as a line passed in during file input split
+	 * @param context - Context object for entire job
+	 */
+	@Override
+	public void map(LongWritable inKey, Text inValue, Context context) throws IOException, InterruptedException{
+
+	}
+}

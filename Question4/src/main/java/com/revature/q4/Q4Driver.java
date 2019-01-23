@@ -6,10 +6,21 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
+/**
+ * Driver for MapReduce solution to Question 4.
+ * Used to configure job.
+ * @author Luigino Perez
+ */
 public class Q4Driver {
 
-	
+	/**
+	 * Configures settings for MapReduce Job.
+	 * Job name: "Question 4".
+	 * Sets job output key as Text, output value as DoubleWritable
+	 * System exits -1 if input format is incorrect. 0 if the job is successfully is completed, 1 if job is unsuccessful.
+	 * @param args - String taken from command line input when running a Hadoop job. 
+	 * Should contain input and output directory for HDFS.
+	 */
 	public static void main(String[] args) throws Exception{
 		//Check if two arguments were passed from command line
 	    if (args.length != 2) {
@@ -18,7 +29,7 @@ public class Q4Driver {
 	      }
 	    Job job = new Job();
 	    job.setJarByClass(Q4Driver.class);
-	    job.setJobName("Question 3");
+	    job.setJobName("Question 4");
 	    FileInputFormat.setInputPaths(job, new Path(args[0]));
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		job.setMapperClass(Q4Mapper.class);

@@ -1,0 +1,9 @@
+package com.revature.q5;
+/**
+ * Driver for MapReduce solution to Question 5.
+ * Used to configure job.
+ * @author Luigino Perez
+ */
+public class Q5Driver {
+
+}

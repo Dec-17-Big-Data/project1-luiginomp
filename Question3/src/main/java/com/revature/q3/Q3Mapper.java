@@ -7,19 +7,26 @@ import org.apache.hadoop.io.LongWritable;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Mapper;
 import org.apache.hadoop.mapreduce.Mapper.Context;
-
+/**
+ * Mapper for MapReduce solution to Question 3.
+ * Extends Mapper class from org.apache.hadoop.mapreduce.Mapper.
+ * @author Luigino Perez
+ *
+ */
 public class Q3Mapper extends Mapper <LongWritable, Text, Text, Text> {
-	//List the % of change in male employment from the year 2000.
-	/*
-	 * ASSUMPTIONS
-	 * Need results from every country with available data
-	 * Don't include any countries that don't have any available data
+
+	/**
+	 * Checks if input contains information for male employment %.
+	 * Emits two key-value pairs: 
+	 * {Country name, "first " + earliest percentage since 2000} and
+	 * {Country name, "second " + latest percentage}
 	 * 
-	 * APPROACH
-	 * Use data from "Employment to population ratio, 15+, male (%) (modeled ILO estimate)"	SL.EMP.TOTL.SP.MA.ZS
-	 * Present results by country and its percentage
+	 * Assumes input file given  to job is Gender_StatsData.csv from Revature project 1 requirements.
+	 * Breaks value into String Array based on csv separators.
+	 * @param key - LongWritable passed in during file input split
+	 * @param value - Text represented as a line passed in during file input split
+	 * @param context - Context object for entire job
 	 */
-	
 	@Override
 	public void map(LongWritable inKey, Text inValue, Context context) throws IOException, InterruptedException{
 		//Clean data of ",["]. Note, does not get rid of initial "
