@@ -4,14 +4,28 @@ import java.io.IOException;
 
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
-
+/**
+ * Mapper for MapReduce solution to Question 2.
+ * Extends Mapper class from org.apache.hadoop.mapreduce.Mapper.
+ * @author Luigino Perez
+ *
+ */
 public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> {
-	
-	//List the average increase in female education in the U.S. from the year 2000.
+
+	/**
+	 * Checks if given information is for USA and if criteria involes female graduations for at least primary, at least secondary, or at least post-secondary.
+	 * Calculates increase between each concurrent percentage and emits a key-value pair as graduation type and calculated increase.
+	 * 
+	 * Assumes input file given  to job is Gender_StatsData.csv from Revature project 1 requirements.
+	 * Breaks value into String Array based on csv separators.
+	 * @param key - LongWritable passed in during file input split
+	 * @param value - Text represented as a line passed in during file input split
+	 * @param context - Context object for entire job
+	 */
 	@Override
 	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
 		//Cleanse data
-		String[] fields = value.toString().split("\",\"");
+		String[] fields = value.toString().split("\",\"?");
 		//Check if country code field contains "USA"
 		if(fields[1].equals("USA")){
 			//Check if indicator code field meets the criteria for primary, secondary, or post-secondary education
@@ -21,20 +35,16 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 				Double currentPercentage = null;
 				Double lastPercentage = null;
 				//Start from year 2000 and calculate the increase between every new entry and previous entry
-				for(int i = 44; i < fields.length -1; i++){
+				for(int i = 44; i <= fields.length -1; i++){
 					Double entry = null;
 					try{
 						entry = Double.parseDouble(fields[i]);
-						System.out.println("Found new entry: " + entry);
 					}catch(NumberFormatException e){
-						System.out.println("Skipped unparsable field: index " + i + ", " + fields[i]);
 						continue;
 					}catch(NullPointerException e){
-						System.out.println("Skipped empty field: index " + i + ", " + fields[i]);
 						continue;
 					}
 					if(lastPercentage == null){
-						System.out.println("Need another entry to calculate");
 						lastPercentage = entry;
 						currentPercentage = entry;
 						continue;
@@ -42,7 +52,6 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 					lastPercentage = currentPercentage;
 					currentPercentage = entry;
 					Double increase = (currentPercentage - lastPercentage) / lastPercentage;
-					System.out.println("(" + currentPercentage + " - " + lastPercentage + ") / " + lastPercentage + " = " + increase);
 					String category = null;
 					//Change which key is written dependent on the indicator code field
 					if(fields[3].equals("SE.PRM.CUAT.FE.ZS")){

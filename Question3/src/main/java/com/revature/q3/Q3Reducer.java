@@ -34,6 +34,7 @@ public class Q3Reducer extends Reducer <Text, Text, Text, DoubleWritable>  {
 		  }
 		  //Emit key-value pair as the country and the calculated change percentage
 		  Double changePercentage = (secondPercentage - firstPercentage) / firstPercentage;
+		  //System.out.println(changePercentage);
 		  context.write(new Text(country), new DoubleWritable(changePercentage));
 	  }
 }

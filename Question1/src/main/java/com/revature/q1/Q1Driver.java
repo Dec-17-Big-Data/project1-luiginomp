@@ -5,10 +5,23 @@ import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Job;
 import org.apache.hadoop.mapreduce.lib.input.FileInputFormat;
 import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
-
+/**
+ * Driver for MapReduce solution to Question 1. Used to configure job.
+ * @author Luigino Perez
+ */
 public class Q1Driver {
 
-	
+	/**
+	 * Assumes input file is Gender_StatsData.csv.
+	 * Configures settings for MapReduce Job.
+	 * Job name: "Question 1".
+	 * Sets number of reduces to 0 because only Mapper is used for this job.
+	 * Output key and output value are Text.
+	 * System exits -1 if input format is incorrect. 0 if the job is successfully is completed, 1 if job is unsuccessful.
+	 * @param args - String taken from command line input when running a Hadoop job. 
+	 * Should contain input and output directory for HDFS.
+	 * @throws Exception
+	 */
 	public static void main(String[] args) throws Exception{
 		//Check if two arguments were passed from command line
 	    if (args.length != 2) {
