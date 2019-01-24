@@ -1,6 +1,9 @@
 package com.revature.q2;
 
 import java.io.IOException;
+import java.math.BigDecimal;
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 
 import org.apache.hadoop.io.*;
 import org.apache.hadoop.mapreduce.Mapper;
@@ -32,6 +35,8 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 			if(fields[3].equals("SE.PRM.CUAT.FE.ZS") || 
 					fields[3].equals("SE.SEC.CUAT.UP.FE.ZS") || 
 					fields[3].equals("SE.SEC.CUAT.PO.FE.ZS")){
+				DecimalFormat df = new DecimalFormat("#.####");
+				df.setRoundingMode(RoundingMode.CEILING);
 				Double currentPercentage = null;
 				Double lastPercentage = null;
 				//Start from year 2000 and calculate the increase between every new entry and previous entry
@@ -51,7 +56,9 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 					}
 					lastPercentage = currentPercentage;
 					currentPercentage = entry;
-					Double increase = (currentPercentage - lastPercentage) / lastPercentage;
+					BigDecimal bIncrease = new BigDecimal(((currentPercentage - lastPercentage) / lastPercentage) * 100);
+					String sIncrease = bIncrease.toString().substring(0, 6);
+					Double increase = Double.parseDouble(sIncrease);
 					String category = null;
 					//Change which key is written dependent on the indicator code field
 					if(fields[3].equals("SE.PRM.CUAT.FE.ZS")){
@@ -61,7 +68,7 @@ public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> 
 					}else if(fields[3].equals("SE.SEC.CUAT.PO.FE.ZS")){
 						category = "Post-Secondary";
 					}
-					context.write(new Text(category), new DoubleWritable(increase));
+					context.write(new Text(category), new DoubleWritable(Double.parseDouble(increase.toString())));
 				}
 			}
 		}

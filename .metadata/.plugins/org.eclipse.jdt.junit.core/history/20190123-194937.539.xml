@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Q2Test.testReducer" project="Question2" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testcase name="testReducer" classname="com.revature.q2.test.Q2Test" time="2.489"/>
+</testrun>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Q1Test" project="Question1" tests="1" started="1" failures="1" errors="0" ignored="0">
+  <testsuite name="com.revature.q1.test.Q1Test" time="1.854">
+    <testcase name="testMapper" classname="com.revature.q1.test.Q1Test" time="1.854">
+      <failure>java.lang.AssertionError: 52 Error(s): (Received unexpected output (Venezuela, RB, 9.45207) at position 9., Received unexpected output (Venezuela, RB, Gross graduation ratio, tertiary, female (%)) at position 51., Received unexpected output (Venezuela, RB, 14.43412) at position 7., Received unexpected output (Venezuela, RB, VEN) at position 52., Received unexpected output (Venezuela, RB, SE.TER.CMPL.FE.ZS) at position 50., Received unexpected output (Venezuela, RB, ) at position 1., Received unexpected output (Venezuela, RB, ) at position 2., Received unexpected output (Venezuela, RB, ) at position 3., Received unexpected output (Venezuela, RB, ) at position 4., Received unexpected output (Venezuela, RB, ) at position 5., Received unexpected output (Venezuela, RB, ) at position 6., Received unexpected output (Venezuela, RB, ) at position 8., Received unexpected output (Venezuela, RB, ) at position 10., Received unexpected output (Venezuela, RB, ) at position 11., Received unexpected output (Venezuela, RB, ) at position 12., Received unexpected output (Venezuela, RB, ) at position 13., Received unexpected output (Venezuela, RB, ) at position 14., Received unexpected output (Venezuela, RB, ) at position 15., Received unexpected output (Venezuela, RB, ) at position 16., Received unexpected output (Venezuela, RB, ) at position 17., Received unexpected output (Venezuela, RB, ) at position 18., Received unexpected output (Venezuela, RB, ) at position 19., Received unexpected output (Venezuela, RB, ) at position 20., Received unexpected output (Venezuela, RB, ) at position 21., Received unexpected output (Venezuela, RB, ) at position 22., Received unexpected output (Venezuela, RB, ) at position 23., Received unexpected output (Venezuela, RB, ) at position 24., Received unexpected output (Venezuela, RB, ) at position 25., Received unexpected output (Venezuela, RB, ) at position 26., Received unexpected output (Venezuela, RB, ) at position 27., Received unexpected output (Venezuela, RB, ) at position 28., Received unexpected output (Venezuela, RB, ) at position 29., Received unexpected output (Venezuela, RB, ) at position 30., Received unexpected output (Venezuela, RB, ) at position 31., Received unexpected output (Venezuela, RB, ) at position 32., Received unexpected output (Venezuela, RB, ) at position 33., Received unexpected output (Venezuela, RB, ) at position 34., Received unexpected output (Venezuela, RB, ) at position 35., Received unexpected output (Venezuela, RB, ) at position 36., Received unexpected output (Venezuela, RB, ) at position 37., Received unexpected output (Venezuela, RB, ) at position 38., Received unexpected output (Venezuela, RB, ) at position 39., Received unexpected output (Venezuela, RB, ) at position 40., Received unexpected output (Venezuela, RB, ) at position 41., Received unexpected output (Venezuela, RB, ) at position 42., Received unexpected output (Venezuela, RB, ) at position 43., Received unexpected output (Venezuela, RB, ) at position 44., Received unexpected output (Venezuela, RB, ) at position 45., Received unexpected output (Venezuela, RB, ) at position 46., Received unexpected output (Venezuela, RB, ) at position 47., Received unexpected output (Venezuela, RB, ) at position 48., Received unexpected output (Venezuela, RB, ) at position 49.)
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.apache.hadoop.mrunit.TestDriver.validate(TestDriver.java:294)
+	at org.apache.hadoop.mrunit.MapDriverBase.runTest(MapDriverBase.java:151)
+	at org.apache.hadoop.mrunit.TestDriver.runTest(TestDriver.java:137)
+	at com.revature.q1.test.Q1Test.testMapper(Q1Test.java:27)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</failure>
+    </testcase>
+  </testsuite>
+</testrun>

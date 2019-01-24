@@ -1,0 +1,53 @@
+package com.revature.q5.test;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mrunit.mapreduce.MapDriver;
+import org.apache.hadoop.mrunit.mapreduce.MapReduceDriver;
+import org.apache.hadoop.mrunit.mapreduce.ReduceDriver;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.revature.q5.Q5Mapper;
+import com.revature.q5.Q5Reducer;
+
+public class Q5Test {
+	
+	  MapDriver<LongWritable, Text, Text, DoubleWritable>  mapDriver;
+	  ReduceDriver <Text, DoubleWritable, Text, DoubleWritable> reduceDriver;
+	  MapReduceDriver<LongWritable, Text, Text, DoubleWritable, Text, DoubleWritable> mapReduceDriver;
+	  
+	  @Before
+	  public void setUp() {
+		    Q5Mapper mapper = new Q5Mapper();
+		    Q5Reducer reducer = new Q5Reducer();
+		    mapDriver = MapDriver.newMapDriver(mapper);
+		    reduceDriver = ReduceDriver.newReduceDriver(reducer);
+		    mapReduceDriver = MapReduceDriver.newMapReduceDriver(mapper, reducer);
+	  }
+	 
+	  @Test
+	  public void testMapper() {
+		  mapDriver.withInput(new LongWritable(), new Text("\"United Kingdom\",\"GBR\",\"Employment in agriculture,"
+		  		+ " female (% of female employment)\",\"SL.AGR.EMPL.FE.ZS\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\",\"\","
+		  		+ "\"1.71000003814697\",\"1.64999997615814\",\"1.5900000333786\",\"1.52999997138977\",\"1.61000001430511\","));
+		  mapDriver.withOutput(new Text("United Kingdom Agriculture Female"), new DoubleWritable(-0.03508775476627975));
+		  mapDriver.withOutput(new Text("United Kingdom Agriculture Female"), new DoubleWritable(-0.03636360221000972));
+		  mapDriver.withOutput(new Text("United Kingdom Agriculture Female"), new DoubleWritable(-0.03773588725110617));
+		  mapDriver.withOutput(new Text("United Kingdom Agriculture Female"), new DoubleWritable(0.05228761072634025));
+		  mapDriver.runTest();
+	  }
+	  
+	  @Test
+	  public void testReducer() {
+	  }
+	  
+	  @Test
+	  public void testMapReduce() {
+	  }
+
+}

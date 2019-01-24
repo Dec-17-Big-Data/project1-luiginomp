@@ -1,6 +1,7 @@
 package com.revature.q4;
 
 import java.io.IOException;
+import java.math.BigDecimal;
 
 import org.apache.hadoop.io.DoubleWritable;
 import org.apache.hadoop.io.Text;
@@ -45,7 +46,10 @@ public class Q4Reducer extends Reducer <Text, Text, Text, DoubleWritable>{
 			  return;
 		  }
 		  //Emit key-value pair as the country and the calculated change percentage
-		  Double changePercentage = (secondPercentage - firstPercentage) / firstPercentage;
-		  context.write(new Text(country), new DoubleWritable(changePercentage));
+		  BigDecimal bChange = new BigDecimal(((secondPercentage - firstPercentage) / firstPercentage) * 100);
+		  String sChange = bChange.toString().substring(0, 6);
+		  Double change = Double.parseDouble(sChange);
+		  System.out.println(change);
+		  context.write(new Text(country), new DoubleWritable(change));
 	  }
 }

@@ -34,10 +34,9 @@ public class Q5Driver {
 		FileOutputFormat.setOutputPath(job, new Path(args[1]));
 		job.setMapperClass(Q5Mapper.class);
 		job.setReducerClass(Q5Reducer.class);
-		job.setMapOutputKeyClass(Text.class);
-		job.setMapOutputValueClass(Text.class);
+		job.setMapOutputValueClass(DoubleWritable.class);
 	    job.setOutputKeyClass(Text.class);
-	    job.setOutputValueClass(DoubleWritable.class);
+	    job.setOutputValueClass(Text.class);
 	    //System exit as 0 if the job completes successfully, otherwise exit as 1
 	    boolean success = job.waitForCompletion(true);
 	    System.exit(success ? 0 : 1);
