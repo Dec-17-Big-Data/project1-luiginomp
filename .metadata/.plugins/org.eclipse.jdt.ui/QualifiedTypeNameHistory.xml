@@ -1,2 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<qualifiedTypeNameHistroy/>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="com.sun.tools.internal.ws.wsdl.document.jaxws.Exception"/>
+<fullyQualifiedTypeName name="java.util.regex.Pattern"/>
+<fullyQualifiedTypeName name="com.revature.q1.Q1Mapper"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mrunit.ReduceDriver"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mrunit.mapreduce.ReduceDriver"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.io.DoubleWritable"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapreduce.Mapper"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mapreduce.Reducer"/>
+<fullyQualifiedTypeName name="org.apache.hadoop.mrunit.mapreduce.MapReduceDriver"/>
+<fullyQualifiedTypeName name="com.revature.q2.Q2Reducer"/>
+<fullyQualifiedTypeName name="com.revature.q3.Q3Reducer"/>
+</qualifiedTypeNameHistroy>

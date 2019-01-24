@@ -1,0 +1,45 @@
+package com.revature.q4.test;
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mrunit.mapreduce.MapDriver;
+import org.apache.hadoop.mrunit.mapreduce.MapReduceDriver;
+import org.apache.hadoop.mrunit.mapreduce.ReduceDriver;
+import org.junit.Before;
+import org.junit.Test;
+
+import com.revature.q4.Q4Mapper;
+import com.revature.q4.Q4Reducer;
+
+public class Q4Test {
+	
+	  MapDriver<LongWritable, Text, Text, Text>  mapDriver;
+	  ReduceDriver <Text, Text, Text, DoubleWritable> reduceDriver;
+	  MapReduceDriver<LongWritable, Text, Text, Text, Text, DoubleWritable> mapReduceDriver;
+	  
+	  @Before
+	  public void setUp() {
+		    Q4Mapper mapper = new Q4Mapper();
+		    Q4Reducer reducer = new Q4Reducer();
+		    mapDriver = MapDriver.newMapDriver(mapper);
+		    reduceDriver = ReduceDriver.newReduceDriver(reducer);
+		    mapReduceDriver = MapReduceDriver.newMapReduceDriver(mapper, reducer);
+	  }
+	 
+	  @Test
+	  public void testMapper() {
+		  //TODO Implement
+	  }
+	  
+	  @Test
+	  public void testReducer() {
+		  //TODO Implement
+	  }
+	  
+	  @Test
+	  public void testMapReduce() {
+		  //TODO Implement
+	  }
+
+}

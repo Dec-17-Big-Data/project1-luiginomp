@@ -1,0 +1,29 @@
+package com.revature.q3;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Mapper.Context;
+
+public class Q3Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> {
+	//List the % of change in male employment from the year 2000.
+	/*
+	 * ASSUMPTIONS
+	 * All employment fields fall under agriculture, industry, and services
+	 */
+	
+	@Override
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
+		//Cleanse data
+		String[] fields = value.toString().split("\",\"?");
+		//Check if indicator code field contains codes for agriculture, industry, services
+		if(fields[3].equals("SL.AGR.EMPL.MA.ZS") ||
+				fields[3].equals("SL.IND.EMPL.MA.ZS") ||
+				fields[3].equals("SL.SRV.EMPL.MA.ZS")){
+			//Compare 
+		}
+	}
+}

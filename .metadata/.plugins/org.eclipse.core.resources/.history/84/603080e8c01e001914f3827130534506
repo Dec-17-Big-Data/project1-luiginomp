@@ -1,0 +1,76 @@
+package com.revature.q2;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.*;
+import org.apache.hadoop.mapreduce.Mapper;
+/**
+ * Mapper for MapReduce solution to Question 1.
+ * Extends Mapper class from org.apache.hadoop.mapreduce.Mapper.
+ * @author Luigino Perez
+ *
+ */
+public class Q2Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable> {
+	
+	/**
+	 * Assumes input file given  to job is Gender_StatsData.csv from Revature project 1 requirements.
+	 * Takes in LongWritable and Text as key-value pair. Value is Text line created during input split of csv file.
+	 * Breaks value into String Array based on csv separators.
+	 * 
+	 * Checks if input value belongs to USA by checking if the index containing country code is "USA".
+	 * If so, it checks if the line indicates
+	 * "Educational attainment, at least completed primary, population 25+ years, female (%) (cumulative)",
+	 * "Educational attainment, at least completed upper secondary, population 25+, female (%) (cumulative)", or
+	 * "Educational attainment, at least completed post-secondary, population 25+, female (%) (cumulative)".
+	 * It then loops through all percentages and emits a key-value pair using "Primary", "Secondary", or "Post-Secondary" as the key,
+	 * and the calculated increase between two concurrent percentages as the value.
+	 * 
+	 * @param key - LongWritable passed in during file input split
+	 * @param value - Text represented as a line passed in during file input split
+	 * @param context - Context object for entire job
+	 */
+	@Override
+	public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException{
+		//Cleanse data
+		String[] fields = value.toString().split("\",\"?");
+		//Check if country code field contains "USA"
+		if(fields[1].equals("USA")){
+			//Check if indicator code field meets the criteria for primary, secondary, or post-secondary education
+			if(fields[3].equals("SE.PRM.CUAT.FE.ZS") || 
+					fields[3].equals("SE.SEC.CUAT.UP.FE.ZS") || 
+					fields[3].equals("SE.SEC.CUAT.PO.FE.ZS")){
+				Double currentPercentage = null;
+				Double lastPercentage = null;
+				//Start from year 2000 and calculate the increase between every new entry and previous entry
+				for(int i = 44; i <= fields.length -1; i++){
+					Double entry = null;
+					try{
+						entry = Double.parseDouble(fields[i]);
+					}catch(NumberFormatException e){
+						continue;
+					}catch(NullPointerException e){
+						continue;
+					}
+					if(lastPercentage == null){
+						lastPercentage = entry;
+						currentPercentage = entry;
+						continue;
+					}
+					lastPercentage = currentPercentage;
+					currentPercentage = entry;
+					Double increase = (currentPercentage - lastPercentage) / lastPercentage;
+					String category = null;
+					//Change which key is written dependent on the indicator code field
+					if(fields[3].equals("SE.PRM.CUAT.FE.ZS")){
+						category = "Primary";
+					}else if(fields[3].equals("SE.SEC.CUAT.UP.FE.ZS")){
+						category = "Secondary";
+					}else if(fields[3].equals("SE.SEC.CUAT.PO.FE.ZS")){
+						category = "Post-Secondary";
+					}
+					context.write(new Text(category), new DoubleWritable(increase));
+				}
+			}
+		}
+	}
+}

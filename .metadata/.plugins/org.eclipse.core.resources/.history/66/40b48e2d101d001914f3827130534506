@@ -1,0 +1,72 @@
+package com.revature.q3;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+import org.apache.hadoop.mapreduce.Mapper.Context;
+
+public class Q3Mapper extends Mapper <LongWritable, Text, Text, Text> {
+	//List the % of change in male employment from the year 2000.
+	/*
+	 * ASSUMPTIONS
+	 * Need results from every country with available data
+	 * Don't include any countries that don't have any available data
+	 * 
+	 * APPROACH
+	 * Use data from "Employment to population ratio, 15+, male (%) (modeled ILO estimate)"	SL.EMP.TOTL.SP.MA.ZS
+	 * Present results by country and its percentage
+	 */
+	
+	@Override
+	public void map(LongWritable inKey, Text inValue, Context context) throws IOException, InterruptedException{
+		//Clean data of ",["]. Note, does not get rid of initial "
+		String[] fields = inValue.toString().split("\",\"?");
+		//Check if line matches category
+		if(fields[3].contains("SL.EMP.TOTL.SP.MA.ZS")){
+			//Get earliest entry, since 2000 (2000 is index 44) as well as the year
+			Double earliestEntry = null;
+			Integer year = null;
+			for(int i = 44; i < fields.length - 1; i++){
+				try{
+					earliestEntry = Double.parseDouble(fields[i]);
+					//Adding index and 1956 will yeild the correct year of the field
+					year = 1956 + i;
+					break;
+				}catch(NumberFormatException e){
+					continue;
+				}catch(NullPointerException e){
+					continue;
+				}
+			}
+			//If country has no entries, don't include it in report
+			if(earliestEntry == null){
+				return;
+			}
+			//Emit key as country name and value as year & percentage
+			//Substring to 1 to get rid of initial "
+			String country = fields[0].toString().substring(1);
+			String value = year.toString() + " " + earliestEntry.toString();
+			context.write(new Text(country), new Text(value));
+			//Get latest entry (2000 is index 44)
+			Double latestEntry = null;
+			for(int i = fields.length - 1; i > 44; i--){
+				try{
+					latestEntry = Double.parseDouble(fields[i]);
+					//Adding index and 1956 will yeild the correct year of the field
+					year = 1956 + i;
+					break;
+				}catch(NumberFormatException e){
+					continue;
+				}catch(NullPointerException e){
+					continue;
+				}
+			}
+			//Emit a second key so the reducer can calculate the % of change
+			value = year.toString() + " " + latestEntry.toString();
+			context.write(new Text(country), new Text(value));
+		}
+	}
+}

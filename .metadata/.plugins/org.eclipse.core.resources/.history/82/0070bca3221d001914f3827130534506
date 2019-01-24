@@ -1,0 +1,7 @@
+package com.revature.q4;
+
+import org.apache.hadoop.mapreduce.Reducer;
+
+public class Q4Reducer extends Reducer{
+
+}

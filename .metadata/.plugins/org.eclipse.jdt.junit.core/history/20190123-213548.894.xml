@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Q4Test" project="Question4" tests="3" started="3" failures="0" errors="0" ignored="0">
+  <testsuite name="com.revature.q4.test.Q4Test" time="2.958">
+    <testcase name="testReducer" classname="com.revature.q4.test.Q4Test" time="2.299"/>
+    <testcase name="testMapper" classname="com.revature.q4.test.Q4Test" time="0.313"/>
+    <testcase name="testMapReduce" classname="com.revature.q4.test.Q4Test" time="0.346"/>
+  </testsuite>
+</testrun>

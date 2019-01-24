@@ -1,0 +1,31 @@
+package com.revature.q3;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Reducer;
+import org.apache.hadoop.mapreduce.Reducer.Context;
+
+public class Q3Reducer extends Reducer <Text, DoubleWritable, Text, DoubleWritable>  {
+	//List the % of change in male employment from the year 2000.
+	
+	  @Override
+	  public void reduce(Text key, Iterable<DoubleWritable> changes, Context context) throws IOException, InterruptedException {
+		  Double sumOfChanges = 0.0;
+		  for(DoubleWritable change : changes){
+			  sumOfChanges += change.get();
+		  }
+		  
+//		  //Calculate the average of increases by getting their sum and dividing by the count
+//		  Double sum = 0.0;
+//		  Integer counter = 0;
+//		  for(DoubleWritable increase : increases){
+//			  sum += increase.get();
+//			  counter += 1;
+//		  }
+//		  Double average = sum / counter;
+//		  System.out.println("Q2Reducer writing key " + key + " and value " + average);
+//		  context.write(new Text(key), new DoubleWritable(average));
+	  }
+}

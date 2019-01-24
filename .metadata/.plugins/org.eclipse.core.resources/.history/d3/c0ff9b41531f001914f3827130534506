@@ -1,0 +1,49 @@
+package com.revature.q5;
+
+import java.io.IOException;
+
+import org.apache.hadoop.io.DoubleWritable;
+import org.apache.hadoop.io.LongWritable;
+import org.apache.hadoop.io.Text;
+import org.apache.hadoop.mapreduce.Mapper;
+/**
+ * Mapper for MapReduce solution to Question 5.
+ * Extends Mapper class from org.apache.hadoop.mapreduce.Mapper.
+ * @author Luigino Perez
+ *
+ */
+public class Q5Mapper extends Mapper <LongWritable, Text, Text, DoubleWritable>{
+	/**
+	 * Emits {Country/Job Sector/Gender, Percentage} for each year the line meets the criteria for employment under agriculture, industry, and service.
+	 * Assumes input file given  to job is Gender_StatsData.csv from Revature project 1 requirements.
+	 * Breaks value into String Array based on csv separators.
+	 * @param key - LongWritable passed in during file input split
+	 * @param value - Text represented as a line passed in during file input split
+	 * @param context - Context object for entire job
+	 */
+	@Override
+	public void map(LongWritable inKey, Text inValue, Context context) throws IOException, InterruptedException{
+		/*
+		 * Employment in agriculture, female (% of female employment)	SL.AGR.EMPL.FE.ZS
+		 * Employment in agriculture, male (% of male employment)	SL.AGR.EMPL.MA.ZS
+		 * Employment in industry, female (% of female employment)	SL.IND.EMPL.FE.ZS
+		 * Employment in industry, male (% of male employment)	SL.IND.EMPL.MA.ZS
+		 * Employment in services, female (% of female employment)	SL.SRV.EMPL.FE.ZS
+		 * Employment in services, male (% of male employment)	SL.SRV.EMPL.MA.ZS
+		 */
+		//Clean data of ",["]. Note, does not get rid of initial "
+		String[] fields = inValue.toString().split("\",\"?");
+		if(fields[3].equals("SL.AGR.EMPL.FE.ZS") || fields[3].equals("SL.AGR.EMPL.MA.ZS") || fields[3].equals("SL.IND.EMPL.FE.ZS") ||
+				fields[3].equals("SL.IND.EMPL.MA.ZS") || fields[3].equals("SL.SRV.EMPL.FE.ZS") || fields[3].equals("SL.SRV.EMPL.MA.ZS")){
+			Double percentage = null;
+			for(int i = 4; i < fields.length -1; i++){
+				try{
+					
+				}catch(NumberFormatException e){
+					
+				}
+			}
+			context.write(new Text(fields[0].toString().substring(1)), new DoubleWritable(percentage));
+		}
+	}
+}

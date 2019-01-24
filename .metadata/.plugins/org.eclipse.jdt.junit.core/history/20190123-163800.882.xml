@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="Q5Test" project="Question5" tests="3" started="3" failures="1" errors="0" ignored="0">
+  <testsuite name="com.revature.q5.test.Q5Test" time="3.941">
+    <testcase name="testReducer" classname="com.revature.q5.test.Q5Test" time="1.786"/>
+    <testcase name="testMapper" classname="com.revature.q5.test.Q5Test" time="2.152">
+      <failure>java.lang.AssertionError: 42 Error(s): (Received unexpected output (United Kingdom Agriculture Female, 0.014705868173635861) at position 32., Received unexpected output (United Kingdom Agriculture Female, 0.21666665010982078) at position 35., Received unexpected output (United Kingdom Agriculture Female, -0.0068027144684576326) at position 5., Received unexpected output (United Kingdom Agriculture Female, -0.16666669978035983) at position 19., Received unexpected output (United Kingdom Agriculture Female, -0.026666641235352007) at position 38., Received unexpected output (United Kingdom Agriculture Female, 0.12999999523162997) at position 20., Received unexpected output (United Kingdom Agriculture Female, -0.11764703304297339) at position 43., Received unexpected output (United Kingdom Agriculture Female, -0.013888957875741357) at position 8., Received unexpected output (United Kingdom Agriculture Female, -0.015748016714078376) at position 14., Received unexpected output (United Kingdom Agriculture Female, 0.065420495150802) at position 24., Received unexpected output (United Kingdom Agriculture Female, -0.05309729471922783) at position 23., Received unexpected output (United Kingdom Agriculture Female, -0.08695654427397033) at position 27., Received unexpected output (United Kingdom Agriculture Female, -0.03703708936484952) at position 10., Received unexpected output (United Kingdom Agriculture Female, 0.07017547712211224) at position 25., Received unexpected output (United Kingdom Agriculture Female, -0.007999992370607955) at position 15., Received unexpected output (United Kingdom Agriculture Female, 0.020547925072554096) at position 6., Received unexpected output (United Kingdom Agriculture Female, -0.08695651208134017) at position 4., Received unexpected output (United Kingdom Agriculture Female, 0.016260146842578982) at position 12., Received unexpected output (United Kingdom Agriculture Female, 0.015999984741207916) at position 13., Received unexpected output (United Kingdom Agriculture Female, -0.2465753458212406) at position 39., Received unexpected output (United Kingdom Agriculture Female, 0.10576924840373696) at position 17., Received unexpected output (United Kingdom Agriculture Female, -0.0492957291255937) at position 9., Received unexpected output (United Kingdom Agriculture Female, 0.043478323967116574) at position 18., Received unexpected output (United Kingdom Agriculture Female, -0.08219178194041261) at position 36., Received unexpected output (United Kingdom Agriculture Female, -0.09859154220139146) at position 45., Received unexpected output (United Kingdom Agriculture Female, -0.16483519938440866) at position 29., Received unexpected output (United Kingdom Agriculture Female, -0.05737709082829351) at position 26., Received unexpected output (United Kingdom Agriculture Female, 0.08333325054910738) at position 41., Received unexpected output (United Kingdom Agriculture Female, 0.027272700672307415) at position 22., Received unexpected output (United Kingdom Agriculture Female, -0.15942031113797483) at position 33., Received unexpected output (United Kingdom Agriculture Female, 0.18333325054910773) at position 44., Received unexpected output (United Kingdom Agriculture Female, -0.03355701476258754) at position 7., Received unexpected output (United Kingdom Agriculture Female, -0.11688308571860372) at position 31., Received unexpected output (United Kingdom Agriculture Female, 0.013157882353605791) at position 30., Received unexpected output (United Kingdom Agriculture Female, 0.034482829494229865) at position 34., Received unexpected output (United Kingdom Agriculture Female, 0.11940295719096586) at position 37., Received unexpected output (United Kingdom Agriculture Female, 0.09090911061310548) at position 40., Received unexpected output (United Kingdom Agriculture Female, -0.05384610446951725) at position 11., Received unexpected output (United Kingdom Agriculture Female, -0.026548647359614017) at position 21., Received unexpected output (United Kingdom Agriculture Female, -0.13333326899815448) at position 28., Received unexpected output (United Kingdom Agriculture Female, 0.04615389553047644) at position 42., Received unexpected output (United Kingdom Agriculture Female, -0.16129035979477888) at position 16.)
+	at org.junit.Assert.fail(Assert.java:88)
+	at org.apache.hadoop.mrunit.TestDriver.validate(TestDriver.java:294)
+	at org.apache.hadoop.mrunit.MapDriverBase.runTest(MapDriverBase.java:151)
+	at org.apache.hadoop.mrunit.TestDriver.runTest(TestDriver.java:137)
+	at com.revature.q5.test.Q5Test.testMapper(Q5Test.java:50)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:57)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:606)
+	at org.junit.runners.model.FrameworkMethod$1.runReflectiveCall(FrameworkMethod.java:50)
+	at org.junit.internal.runners.model.ReflectiveCallable.run(ReflectiveCallable.java:12)
+	at org.junit.runners.model.FrameworkMethod.invokeExplosively(FrameworkMethod.java:47)
+	at org.junit.internal.runners.statements.InvokeMethod.evaluate(InvokeMethod.java:17)
+	at org.junit.internal.runners.statements.RunBefores.evaluate(RunBefores.java:26)
+	at org.junit.runners.ParentRunner.runLeaf(ParentRunner.java:325)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:78)
+	at org.junit.runners.BlockJUnit4ClassRunner.runChild(BlockJUnit4ClassRunner.java:57)
+	at org.junit.runners.ParentRunner$3.run(ParentRunner.java:290)
+	at org.junit.runners.ParentRunner$1.schedule(ParentRunner.java:71)
+	at org.junit.runners.ParentRunner.runChildren(ParentRunner.java:288)
+	at org.junit.runners.ParentRunner.access$000(ParentRunner.java:58)
+	at org.junit.runners.ParentRunner$2.evaluate(ParentRunner.java:268)
+	at org.junit.runners.ParentRunner.run(ParentRunner.java:363)
+	at org.eclipse.jdt.internal.junit4.runner.JUnit4TestReference.run(JUnit4TestReference.java:50)
+	at org.eclipse.jdt.internal.junit.runner.TestExecution.run(TestExecution.java:38)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:459)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.runTests(RemoteTestRunner.java:675)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.run(RemoteTestRunner.java:382)
+	at org.eclipse.jdt.internal.junit.runner.RemoteTestRunner.main(RemoteTestRunner.java:192)
+
+</failure>
+    </testcase>
+    <testcase name="testMapReduce" classname="com.revature.q5.test.Q5Test" time="0.003"/>
+  </testsuite>
+</testrun>
